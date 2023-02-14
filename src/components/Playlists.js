@@ -21,7 +21,7 @@ function PlayLists() {
       const playlists = items.map(({ name, id }) => {
         return { name, id };
       });
-      dispatch({ type: reducerCases.SET_PLSYLISTS, playlists });
+      dispatch({ type: reducerCases.SET_PLAYLISTS, playlists });
     };
     getPlaylistData();
   }, [token, dispatch]);
