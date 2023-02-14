@@ -5,19 +5,21 @@ import { useStateProvider } from "../utils/StateProvider";
 
 function Navbar() {
   const [{ userInfo }] = useStateProvider();
-  console.log(userInfo)
-  return <Container>
-    <div className="search__bar">
-      <FaSearch />
-      <input type="text" placeholder="Artists, songs, or podcasts" />
-    </div>
-    <div className="avatar">
-      <a href="#">
-        <CgProfile />
-        <span>{userInfo?.userName}</span>
-      </a>
-    </div>
-  </Container>
+
+  return (
+    <Container>
+      <div className="search__bar">
+        <FaSearch />
+        <input type="text" placeholder="Artists, songs, or podcasts" />
+      </div>
+      <div className="avatar">
+        <a href="#">
+          <CgProfile />
+          <span>{userInfo?.userName}</span>
+        </a>
+      </div>
+    </Container>
+  );
 }
 
 export default Navbar;
@@ -32,7 +34,7 @@ const Container = styled.div`
   top: 0;
   transition: 0.3 ease-in-out;
   background-color: none;
-  .search__bar{
+  .search__bar {
     background-color: white;
     width: 30%;
     padding: 0.4rem 1rem;
@@ -40,16 +42,16 @@ const Container = styled.div`
     display: flex;
     align-items: center;
     gap: 0.5rem;
-    input{
+    input {
       border: none;
       height: 2rem;
       width: 100%;
-      &:focus{
+      &:focus {
         outline: none;
       }
     }
   }
-  .avatar{
+  .avatar {
     background-color: black;
     padding: 0.3rem 0.4rem;
     padding-right: 1rem;
@@ -57,7 +59,7 @@ const Container = styled.div`
     display: flex;
     just-content: center;
     align-items: center;
-    a{
+    a {
       display: flex;
       justify-content: center;
       align-items: center;
@@ -65,7 +67,7 @@ const Container = styled.div`
       text-decoration: none;
       color: white;
       font-weight: bold;
-      svg{
+      svg {
         font-size: 1.3rem;
         background-color: #282828;
         padding: 0.2rem;
