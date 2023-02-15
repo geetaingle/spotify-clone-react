@@ -39,7 +39,6 @@ function Body({ headerBackground }) {
         })),
       };
       dispatch({ type: reducerCases.SET_PLAYLIST, selectedPlaylist });
-      console.log(response.data);
     };
     getInitialPlaylist();
   }, [token, dispatch, selectedPlaylistId]);
@@ -185,7 +184,7 @@ const Container = styled.div`
             height: 40px;
           }
         }
-        .details {
+        .detail {
           display: flex;
           gap: 1rem;
           .info {
