@@ -5,7 +5,7 @@ import { useEffect } from "react";
 import axios from "axios";
 import { reducerCases } from "../utils/Constants";
 
-function Body() {
+function Body({ headerBackground }) {
   const [{ token, selectedPlaylistId, selectedPlaylist }, dispatch] =
     useStateProvider();
 
@@ -43,6 +43,12 @@ function Body() {
     };
     getInitialPlaylist();
   }, [token, dispatch, selectedPlaylistId]);
+
+  const msToMinAndSecs = (ms) => {
+    const mins = Math.floor(ms / 60000);
+    const secs = ((ms % 60000) / 1000).toFixed(0);
+    return mins + ":" + (secs < 10 ? "0" : "") + secs;
+  };
   return (
     <Container>
       {selectedPlaylist && (
@@ -102,12 +108,12 @@ function Body() {
                           <span className="name">{name}</span>
                           <span>{artists}</span>
                         </div>
-                        <div className="col">
-                          <span>{album}</span>
-                        </div>
-                        <div className="col">
-                          <span>{duration}</span>
-                        </div>
+                      </div>
+                      <div className="col">
+                        <span>{album}</span>
+                      </div>
+                      <div className="col">
+                        <span>{msToMinAndSecs(duration)}</span>
                       </div>
                     </div>
                   );
@@ -149,13 +155,15 @@ const Container = styled.div`
   .list {
     .header__row {
       display: grid;
-      grid-template-column: 0.3fr 3fr 2fr 0.1fr;
+      grid-template-columns: 0.3fr 3fr 2fr 0.1fr;
       color: #dddcdc;
       margin: 1rem 0 0 0;
       position: sticky;
       top: 15vh;
       padding: 1rem 3rem;
       transition: 0.3s ease-in-out;
+      background-color: ${({ headerBackground }) =>
+        headerBackground ? "#000000dc" : "none"};
     }
     .tracks {
       margin: 0 2rem;
